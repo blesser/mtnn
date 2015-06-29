@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "BA067883C0B4B4F6C14D92BEB8F9880B814A8461",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "BA067883C0B4B4F6C14D92BEB8F9880B814A8461" : 0,
+    "CBD915DA2979D1835E88297992E137B9AFD28351" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "BB0C0252-29A6-475F-B3FA-7D2DAF120629",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "BA067883C0B4B4F6C14D92BEB8F9880B814A8461" : "dhlibxls",
+    "CBD915DA2979D1835E88297992E137B9AFD28351" : "dhlibxlslibxls"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "mtnn",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 203,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "mtnn.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/dhoerl\/dhlibxls",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "BA067883C0B4B4F6C14D92BEB8F9880B814A8461"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/JanX2\/libxls.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "CBD915DA2979D1835E88297992E137B9AFD28351"
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>B691B01A-1FCC-4328-A77B-877B4B2CB0D7</string>
+	<key>IDESourceControlProjectName</key>
+	<string>mtmm</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>BA067883C0B4B4F6C14D92BEB8F9880B814A8461</key>
+		<string>https://github.com/dhoerl/dhlibxls</string>
+		<key>CBD915DA2979D1835E88297992E137B9AFD28351</key>
+		<string>https://github.com/JanX2/libxls.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>mtmm.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>BA067883C0B4B4F6C14D92BEB8F9880B814A8461</key>
+		<string>../..</string>
+		<key>CBD915DA2979D1835E88297992E137B9AFD28351</key>
+		<string>../..libxls</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/dhoerl/dhlibxls</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>BA067883C0B4B4F6C14D92BEB8F9880B814A8461</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>BA067883C0B4B4F6C14D92BEB8F9880B814A8461</string>
+			<key>IDESourceControlWCCName</key>
+			<string>dhlibxls</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>CBD915DA2979D1835E88297992E137B9AFD28351</string>
+			<key>IDESourceControlWCCName</key>
+			<string>dhlibxlslibxls</string>
+		</dict>
+	</array>
+</dict>
+</plist>

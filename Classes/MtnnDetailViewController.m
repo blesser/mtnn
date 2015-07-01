@@ -65,21 +65,45 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    return 4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *identifier = @"mtnnCell";
-    MtnnGotStatusCell *cell =  [tableView dequeueReusableCellWithIdentifier:identifier];
-    if (cell == nil) {
-        cell = [[MtnnGotStatusCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-        cell.delegate = self;
+    if (indexPath.row == 0) {
+        static NSString *identifier = @"mtnnCell";
+        MtnnGotStatusCell *cell =  [tableView dequeueReusableCellWithIdentifier:identifier];
+        if (cell == nil) {
+            cell = [[MtnnGotStatusCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+            cell.delegate = self;
+        }
+        
+        [cell setStatusSwitchValue:self.item.got name:self.item.name];
+        
+        return cell;
+    } else {
+        static NSString *identifier = @"normalCell";
+        UITableViewCell *cell =  [tableView dequeueReusableCellWithIdentifier:identifier];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:identifier];
+        }
+        
+        cell.textLabel.font = [UIFont systemFontOfSize:14.0f];
+        cell.detailTextLabel.font = [UIFont systemFontOfSize:14.0f];
+        
+        if (indexPath.row == 1) {
+            cell.textLabel.text = @"标签1";
+            cell.detailTextLabel.text = self.item.sign1;
+        } else if (indexPath.row == 2) {
+            cell.textLabel.text = @"标签2";
+            cell.detailTextLabel.text = self.item.sign2;
+        } else if (indexPath.row == 3) {
+            cell.textLabel.text = @"获取途径";
+            cell.detailTextLabel.text = self.item.channel;
+        }
+        return cell;
     }
     
-    [cell setStatusSwitchValue:self.item.got name:self.item.name];
-    
-    return cell;
 }
 
 #pragma mark - UITableViewDelegate

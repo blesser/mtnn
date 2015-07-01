@@ -11,11 +11,14 @@
 #import "MtnnDataManager.h"
 #import "DHxlsReader.h"
 
+static NSInteger firstItemRow = 2;
+
 @interface MtnnPageSheetStore ()
 
 @property (nonatomic, assign) NSUInteger pageSheetIndex;
 
 @property (nonatomic, strong) NSMutableArray *itemArray;
+@property (nonatomic, strong) NSMutableArray *itemNotGotArray;
 @property (nonatomic, strong) NSMutableArray *itemGotArray;
 
 @property (nonatomic, copy) NSString *title;
@@ -31,7 +34,7 @@
         
         unsigned int rowCount = [reader numberOfRowsInSheet:sheetIndex];
         NSMutableArray *array = [NSMutableArray array];
-        for (unsigned int i = 0; i<rowCount; i++) {
+        for (unsigned int i = firstItemRow; i<(rowCount-firstItemRow); i++) {
             MtnnItem *item = [[MtnnItem alloc] initWithReader:reader index:sheetIndex row:i+1 keyArray:keyArray];
             if (!item) {
                 break;
@@ -40,18 +43,6 @@
             [array addObject:item];
         }
         
-//        NSDictionary *itemGotDic = [[MtnnDataManager sharedManager] itemGetList];
-//        for (MtnnItem *item in array) {
-//            if (itemGotDic[item.name]) {
-//                item.got = [itemGotDic[item.name] boolValue];
-//            }
-//            
-//            if (item.got) {
-//                [self.itemGotArray addObject:item];
-//            } else {
-//                [self.itemArray addObject:item];
-//            }
-//        }
         [self.itemArray addObjectsFromArray:array];
         
     }
@@ -62,7 +53,7 @@
 - (NSArray *)orderItemWithSelectedStatus:(NSArray *)selectedStatus
 {
     NSMutableArray *itemGotArray = [NSMutableArray arrayWithArray:self.itemGotArray];
-    NSMutableArray *array = [NSMutableArray arrayWithArray:self.itemArray];
+    NSMutableArray *array = [NSMutableArray arrayWithArray:self.itemNotGotArray];
     if (selectedStatus) {
         [itemGotArray sortUsingComparator:[self sortDescreaseBlockWithSelectStatus:selectedStatus]];
         [array sortUsingComparator:[self sortDescreaseBlockWithSelectStatus:selectedStatus]];
@@ -76,10 +67,10 @@
 - (void)changeItem:(NSString *)name gotStatus:(BOOL)gotStatus
 {
     if (gotStatus) {
-        NSArray *itemArray = [NSArray arrayWithArray:self.itemArray];
+        NSArray *itemArray = [NSArray arrayWithArray:self.itemNotGotArray];
         for (MtnnItem *item in itemArray) {
             if ([item.name isEqualToString:name]) {
-                [self.itemArray removeObject:item];
+                [self.itemNotGotArray removeObject:item];
                 [self.itemGotArray addObject:item];
                 break;
             }
@@ -89,9 +80,24 @@
         for (MtnnItem *item in itemGotArray) {
             if ([item.name isEqualToString:name]) {
                 [self.itemGotArray removeObject:item];
-                [self.itemArray addObject:item];
+                [self.itemNotGotArray addObject:item];
                 break;
             }
+        }
+    }
+}
+
+- (void)reloadWithGotDic:(NSDictionary *)itemGotDic
+{
+    for (MtnnItem *item in self.itemArray) {
+        if (itemGotDic[item.name]) {
+            item.got = [itemGotDic[item.name] boolValue];
+        }
+        
+        if (item.got) {
+            [self.itemGotArray addObject:item];
+        } else {
+            [self.itemNotGotArray addObject:item];
         }
     }
 }
@@ -126,6 +132,14 @@
         _itemGotArray = [NSMutableArray array];
     }
     return _itemGotArray;
+}
+
+- (NSMutableArray *)itemNotGotArray
+{
+    if (!_itemNotGotArray) {
+        _itemNotGotArray = [NSMutableArray array];
+    }
+    return _itemNotGotArray;
 }
 
 @end

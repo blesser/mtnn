@@ -11,6 +11,10 @@
 #import "MtnnItem.h"
 #import "DHxlsReader.h"
 
+static NSInteger firstPageIndex = 1;
+
+static NSInteger maxPageCount = 9;
+
 @interface MtnnDataManager ()
 
 @property (nonatomic, strong) NSMutableArray *pageSheetArray;
@@ -48,13 +52,12 @@
         
         _selectedStatus = [NSMutableArray arrayWithArray:self.constFlagArray];
         
-        NSString *filePath = [[NSBundle mainBundle] pathForResource:@"ItemGotList.plist" ofType:@"plist"];
-        NSDictionary *itemGotDic = [NSMutableDictionary dictionaryWithContentsOfFile:filePath];
+        NSDictionary *itemGotDic = [[NSUserDefaults standardUserDefaults] objectForKey:@"ItemGotList"];
         if (itemGotDic && itemGotDic.count) {
             [self.itemGotListDic setValuesForKeysWithDictionary:itemGotDic];
         }
         
-        filePath = [[NSBundle mainBundle] pathForResource:@"MtnnCoordinates" ofType:@"plist"];
+        NSString *filePath = [[NSBundle mainBundle] pathForResource:@"MtnnCoordinates" ofType:@"plist"];
         _coordinatesDic = [NSDictionary dictionaryWithContentsOfFile:filePath];
 
         [self readFile];
@@ -62,6 +65,8 @@
         _title = [self.titleArray firstObject];
 
         [self reloadData];
+        
+        [self lodeGotListWith:[NSDictionary dictionaryWithDictionary:self.itemGotListDic]];
     }
     return self;
 }
@@ -82,12 +87,18 @@
 
 - (void)createDataWithReader:(DHxlsReader *)reader
 {
-    uint32_t pageSheetCount = [reader numberOfSheets];
-    for (unsigned int i = 0; i<pageSheetCount; i++) {
+    for (unsigned int i = firstPageIndex; i<firstPageIndex+maxPageCount; i++) {
         MtnnPageSheetStore *dataStore = [[MtnnPageSheetStore alloc] initWithReader:reader pageSheetIndex:i keyArray:self.constFlagArray];
         [self.pageSheetArray addObject:dataStore];
         
         [self.titleArray addObject:dataStore.title];
+    }
+}
+
+- (void)lodeGotListWith:(NSDictionary *)itemGotList
+{
+    for (MtnnPageSheetStore *pageStore in self.pageSheetArray) {
+        [pageStore reloadWithGotDic:itemGotList];
     }
 }
 
@@ -138,7 +149,6 @@
 {
     if (name) {
         [_itemGotListDic setObject:@(status) forKey:name];
-        
         NSUInteger index = [self.titleArray indexOfObject:pageTitle];
         if (index != NSNotFound) {
             MtnnPageSheetStore *dataStore = self.pageSheetArray[index];
@@ -149,13 +159,8 @@
 
 - (void)saveGotList
 {
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"ItemGotList.plist" ofType:@"plist"];
-    [_itemGotListDic writeToFile:filePath atomically:YES];
-}
-
-- (NSDictionary *)itemGetList
-{
-    return [NSDictionary dictionaryWithDictionary:self.itemGotListDic];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSDictionary dictionaryWithDictionary:self.itemGotListDic] forKey:@"ItemGotList"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 

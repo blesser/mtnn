@@ -28,6 +28,4 @@
 
 - (void)saveGotList;
 
-- (NSDictionary *)itemGetList;
-
 @end

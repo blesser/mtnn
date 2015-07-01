@@ -180,7 +180,7 @@ extern int xls_debug;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return;
+//    return;
     if (indexPath.row) {
         MtnnItem *item = [MtnnDataManager sharedManager].currentItemArray[indexPath.row-1];
         MtnnDetailViewController *detailVc = [[MtnnDetailViewController alloc] initWithItem:item pageTitle:self.title];
@@ -209,7 +209,7 @@ extern int xls_debug;
     } else{
         [cell setCellType:MtnnContentCellNormalType];
         MtnnItem *item = [MtnnDataManager sharedManager].currentItemArray[indexPath.row-1];
-        [cell setCellWithName:item.name currentValue:[item currentValueWithSelectStatus:[MtnnDataManager sharedManager].selectedStatus] allValue:[item allValue]];
+        [cell setCellWithName:item.name currentValue:[item currentValueWithSelectStatus:[MtnnDataManager sharedManager].selectedStatus] allValue:[item allValue] got:item.got];
     }
 
     return cell;
@@ -218,9 +218,9 @@ extern int xls_debug;
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row % 2 == 0) {
-        cell.backgroundColor = [UIColor clearColor];
+        cell.backgroundColor = [UIColor colorWithRed:0xe3 / 255.0f green:0xe3 / 255.0f blue:0xe3 / 255.0f alpha:1.0f];
     } else {
-        cell.backgroundColor = [UIColor lightGrayColor];
+        cell.backgroundColor = [UIColor colorWithRed:0xf3 / 255.0f green:0xf3 / 255.0f blue:0xf3 / 255.0f alpha:1.0f];
     }
 }
 

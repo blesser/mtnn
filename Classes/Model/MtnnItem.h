@@ -14,6 +14,9 @@
 
 @property (nonatomic, readonly ,copy) NSString *name;
 @property (nonatomic ,assign) BOOL got;
+@property (nonatomic, readonly, copy) NSString *sign1;
+@property (nonatomic, readonly, copy) NSString *sign2;
+@property (nonatomic, readonly, copy) NSString *channel;
 
 - (instancetype)initWithReader:(DHxlsReader *)reader index:(uint32_t)index row:(uint32_t)row keyArray:(NSArray *)keyArray;
 

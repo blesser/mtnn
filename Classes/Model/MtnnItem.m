@@ -10,11 +10,17 @@
 #import "DHxlsReader.h"
 #import "MtnnDataManager.h"
 
+static NSInteger const propertyIndex = 4;
+static NSInteger const propertyCount = 10;
+
 @interface MtnnItem ()
 
 @property (nonatomic, strong) NSMutableDictionary *dataMap;
 
 @property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy) NSString *sign1;
+@property (nonatomic, copy) NSString *sign2;
+@property (nonatomic, copy) NSString *channel;
 
 @end
 
@@ -24,8 +30,6 @@
 - (instancetype)initWithReader:(DHxlsReader *)reader index:(uint32_t)index row:(uint32_t)row keyArray:(NSArray *)keyArray
 {
     if (self = [super init]) {
-        uint32_t colCount = [reader numberOfColsInSheet:index];
-
         DHcell *cell = [reader cellInWorkSheetIndex:index row:row col:1];
         self.name = cell.str;
         
@@ -33,19 +37,36 @@
             return nil;
         }
         
-        for (unsigned int i= 1; i<(colCount-1); i++) {
+        for (unsigned int i= propertyIndex; i<(propertyCount + propertyIndex); i++) {
             DHcell *cell = [reader cellInWorkSheetIndex:index row:row col:i+1];
-            if (i-1 >= keyArray.count) {
+            if (i-propertyIndex >= keyArray.count) {
                 break;
             }
-            
-            NSString *key = keyArray[i-1];
+
+            NSString *key = keyArray[i-propertyIndex];
             if (cell.val && ![cell.val isEqual:[NSNull null]]) {
                 [self.dataMap setObject:cell.val forKey:key];
             } else{
                 [self.dataMap setObject:@0 forKey:key];
             }
         }
+        
+
+        DHcell *signCell = [reader cellInWorkSheetIndex:index row:row col:(propertyIndex + propertyCount + 1)];
+        if (signCell.str && signCell.str.length && ![signCell.str isEqual:[NSNull null]]) {
+            _sign1 = signCell.str;
+        }
+        signCell = [reader cellInWorkSheetIndex:index row:row col:(propertyIndex + propertyCount + 2)];
+        if (signCell.str && ![signCell.str isEqual:[NSNull null]]) {
+            _sign2 = signCell.str;
+        }
+        
+        DHcell *channelCell = [reader cellInWorkSheetIndex:index row:row col:(propertyIndex + propertyCount + 3)];
+        if (channelCell.str && ![channelCell.str isEqual:[NSNull null]]) {
+            _channel = channelCell.str;
+        }
+        //NSLog(@"name is %@,sign1 %@,sign 2 %@,channel %@",self.name,self.sign1, self.sign2, self.channel);
+
     }
     return self;
 }

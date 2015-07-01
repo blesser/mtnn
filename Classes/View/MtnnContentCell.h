@@ -20,6 +20,6 @@ typedef NS_ENUM(NSInteger, MtnnContentCellType)
 
 - (void)setCellType:(MtnnContentCellType)cellType;
 
-- (void)setCellWithName:(NSString *)name currentValue:(NSUInteger)currentValue allValue:(NSUInteger)allValue;
+- (void)setCellWithName:(NSString *)name currentValue:(NSUInteger)currentValue allValue:(NSUInteger)allValue got:(BOOL)got;
 
 @end

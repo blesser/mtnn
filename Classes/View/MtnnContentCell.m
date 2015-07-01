@@ -46,15 +46,25 @@
     if (cellType == MtnnContentCellHeaderType) {
         self.nameLabel.text = @"名称";
         self.currentValue.text = @"当前值";
+        self.currentValue.textColor = [UIColor blackColor];
         self.allValue.text = @"所有值";
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
+    } else {
+        self.selectionStyle = UITableViewCellSelectionStyleDefault;
     }
 }
 
-- (void)setCellWithName:(NSString *)name currentValue:(NSUInteger)currentValue allValue:(NSUInteger)allValue
+- (void)setCellWithName:(NSString *)name currentValue:(NSUInteger)currentValue allValue:(NSUInteger)allValue got:(BOOL)got
 {
     self.nameLabel.text = name;
     self.currentValue.text = [NSString stringWithFormat:@"%d",currentValue];
     self.allValue.text = [NSString stringWithFormat:@"%d",allValue];
+    
+    if (got) {
+        self.currentValue.textColor = [UIColor colorWithRed:0x47 / 255.0f green:0x9e / 255.0f blue:0x12 / 255.0f alpha:1.00f];
+    } else {
+        self.currentValue.textColor = [UIColor redColor];
+    }
 }
 
 @end

@@ -20,4 +20,6 @@
 
 - (void)changeItem:(NSString *)name gotStatus:(BOOL)gotStatus;
 
+- (void)reloadWithGotDic:(NSDictionary *)itemGotDic;
+
 @end

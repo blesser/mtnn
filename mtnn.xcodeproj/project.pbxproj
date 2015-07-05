@@ -14,7 +14,6 @@
 		144FCAFC1B2D5AF8006EFD13 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 144FCAF91B2D5AF8006EFD13 /* main.m */; };
 		144FCAFE1B2D5AF8006EFD13 /* mtnn-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 144FCAFB1B2D5AF8006EFD13 /* mtnn-Info.plist */; };
 		144FCB041B2D5C03006EFD13 /* MtnnDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 144FCB021B2D5C03006EFD13 /* MtnnDataManager.m */; };
-		144FCB061B2D5C41006EFD13 /* Document.xlsx in Resources */ = {isa = PBXBuildFile; fileRef = 144FCB051B2D5C41006EFD13 /* Document.xlsx */; };
 		144FCB081B2D5E4A006EFD13 /* Document.xls in Resources */ = {isa = PBXBuildFile; fileRef = 144FCB071B2D5E4A006EFD13 /* Document.xls */; };
 		144FCB0B1B2D6350006EFD13 /* MtnnItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 144FCB0A1B2D6350006EFD13 /* MtnnItem.m */; };
 		144FCB0E1B2D6BD4006EFD13 /* MtnnPageSheetStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 144FCB0D1B2D6BD4006EFD13 /* MtnnPageSheetStore.m */; };
@@ -85,7 +84,6 @@
 		144FCAFB1B2D5AF8006EFD13 /* mtnn-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "mtnn-Info.plist"; path = "mtnnxls/mtnn-Info.plist"; sourceTree = SOURCE_ROOT; };
 		144FCB021B2D5C03006EFD13 /* MtnnDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MtnnDataManager.m; path = Classes/Model/MtnnDataManager.m; sourceTree = "<group>"; };
 		144FCB031B2D5C03006EFD13 /* MtnnDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MtnnDataManager.h; path = Classes/Model/MtnnDataManager.h; sourceTree = "<group>"; };
-		144FCB051B2D5C41006EFD13 /* Document.xlsx */ = {isa = PBXFileReference; lastKnownFileType = file; path = Document.xlsx; sourceTree = "<group>"; };
 		144FCB071B2D5E4A006EFD13 /* Document.xls */ = {isa = PBXFileReference; lastKnownFileType = file; path = Document.xls; sourceTree = "<group>"; };
 		144FCB091B2D6350006EFD13 /* MtnnItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MtnnItem.h; path = Classes/Model/MtnnItem.h; sourceTree = "<group>"; };
 		144FCB0A1B2D6350006EFD13 /* MtnnItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MtnnItem.m; path = Classes/Model/MtnnItem.m; sourceTree = "<group>"; };
@@ -141,7 +139,6 @@
 			isa = PBXGroup;
 			children = (
 				144FCB071B2D5E4A006EFD13 /* Document.xls */,
-				144FCB051B2D5C41006EFD13 /* Document.xlsx */,
 				DEF79AD316E8E60F00E4B803 /* README.md */,
 				3DA903DB179ABE8F006C2EF2 /* Default-568h@2x.png */,
 				14C764781B3BDBF5000B1AE8 /* MtnnCoordinates.plist */,
@@ -300,7 +297,7 @@
 				LastUpgradeCheck = 0440;
 				TargetAttributes = {
 					DEB78B6F14BC7D4400845894 = {
-						DevelopmentTeam = SW84DT967K;
+						DevelopmentTeam = 6PMV362W4P;
 					};
 				};
 			};
@@ -350,7 +347,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				144FCB081B2D5E4A006EFD13 /* Document.xls in Resources */,
-				144FCB061B2D5C41006EFD13 /* Document.xlsx in Resources */,
 				DEF79AD416E8E60F00E4B803 /* README.md in Resources */,
 				144FCAF71B2D5AEB006EFD13 /* InfoPlist.strings in Resources */,
 				14D8DC0B1B3C47CD005DA3F8 /* ItemGotList.plist in Resources */,
@@ -421,8 +417,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: zhangyanjin83@gmail.com (BKV7422UF3)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: zhangyanjin83@gmail.com (BKV7422UF3)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: qy wang (P5YXH46ND6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: qy wang (P5YXH46ND6)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = NO;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
@@ -431,7 +427,7 @@
 				HEADER_SEARCH_PATHS = DHxlsReader;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "fc95d9af-d9eb-451d-8a96-330b9c029d42";
+				PROVISIONING_PROFILE = "0029cf6c-bd33-4e66-b12d-7996c4a86eaa";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -440,14 +436,14 @@
 		DE97994414BCD581006E5AC2 /* Distribution */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: zhangyanjin83@gmail.com (BKV7422UF3)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: qy wang (P5YXH46ND6)";
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "mtnnxls/mtnn-Prefix.pch";
 				INFOPLIST_FILE = "mtnnxls/mtnn-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = mtnn;
-				PROVISIONING_PROFILE = "fc95d9af-d9eb-451d-8a96-330b9c029d42";
+				PROVISIONING_PROFILE = "0029cf6c-bd33-4e66-b12d-7996c4a86eaa";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Distribution;
@@ -458,8 +454,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: zhangyanjin83@gmail.com (BKV7422UF3)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: zhangyanjin83@gmail.com (BKV7422UF3)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: qy wang (P5YXH46ND6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: qy wang (P5YXH46ND6)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = NO;
@@ -472,7 +468,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = DHxlsReader;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				PROVISIONING_PROFILE = "fc95d9af-d9eb-451d-8a96-330b9c029d42";
+				PROVISIONING_PROFILE = "0029cf6c-bd33-4e66-b12d-7996c4a86eaa";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -483,8 +479,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: zhangyanjin83@gmail.com (BKV7422UF3)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: zhangyanjin83@gmail.com (BKV7422UF3)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: qy wang (P5YXH46ND6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: qy wang (P5YXH46ND6)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = NO;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
@@ -493,7 +489,7 @@
 				HEADER_SEARCH_PATHS = DHxlsReader;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "fc95d9af-d9eb-451d-8a96-330b9c029d42";
+				PROVISIONING_PROFILE = "0029cf6c-bd33-4e66-b12d-7996c4a86eaa";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -502,14 +498,14 @@
 		DEB78B8F14BC7D4400845894 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: zhangyanjin83@gmail.com (BKV7422UF3)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: qy wang (P5YXH46ND6)";
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "mtnnxls/mtnn-Prefix.pch";
 				INFOPLIST_FILE = "mtnnxls/mtnn-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = mtnn;
-				PROVISIONING_PROFILE = "fc95d9af-d9eb-451d-8a96-330b9c029d42";
+				PROVISIONING_PROFILE = "0029cf6c-bd33-4e66-b12d-7996c4a86eaa";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -517,14 +513,14 @@
 		DEB78B9014BC7D4400845894 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: zhangyanjin83@gmail.com (BKV7422UF3)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: qy wang (P5YXH46ND6)";
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "mtnnxls/mtnn-Prefix.pch";
 				INFOPLIST_FILE = "mtnnxls/mtnn-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = mtnn;
-				PROVISIONING_PROFILE = "fc95d9af-d9eb-451d-8a96-330b9c029d42";
+				PROVISIONING_PROFILE = "0029cf6c-bd33-4e66-b12d-7996c4a86eaa";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

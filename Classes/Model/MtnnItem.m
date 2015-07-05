@@ -10,7 +10,7 @@
 #import "DHxlsReader.h"
 #import "MtnnDataManager.h"
 
-static NSInteger const propertyIndex = 4;
+static NSInteger const propertyIndex = 5;
 static NSInteger const propertyCount = 10;
 
 @interface MtnnItem ()
@@ -21,6 +21,7 @@ static NSInteger const propertyCount = 10;
 @property (nonatomic, copy) NSString *sign1;
 @property (nonatomic, copy) NSString *sign2;
 @property (nonatomic, copy) NSString *channel;
+@property (nonatomic, copy) NSString *type;
 
 @end
 
@@ -30,6 +31,13 @@ static NSInteger const propertyCount = 10;
 - (instancetype)initWithReader:(DHxlsReader *)reader index:(uint32_t)index row:(uint32_t)row keyArray:(NSArray *)keyArray
 {
     if (self = [super init]) {
+        
+        NSDictionary *valueDic = @{@"SS": @(6),
+                                   @"S": @(5),
+                                   @"A": @(4),
+                                   @"B": @(3),
+                                   @"C": @(2)};
+        
         DHcell *cell = [reader cellInWorkSheetIndex:index row:row col:1];
         self.name = cell.str;
         
@@ -37,31 +45,33 @@ static NSInteger const propertyCount = 10;
             return nil;
         }
         
-        for (unsigned int i= propertyIndex; i<(propertyCount + propertyIndex); i++) {
-            DHcell *cell = [reader cellInWorkSheetIndex:index row:row col:i+1];
-            if (i-propertyIndex >= keyArray.count) {
+        NSInteger beginIndex = ([self.name isEqualToString:@"袜子"] || [self.name isEqualToString:@"饰品"]) ? propertyIndex + 1: propertyIndex;
+        
+        for (unsigned int i= beginIndex; i<(propertyCount + beginIndex); i++) {
+            DHcell *cell = [reader cellInWorkSheetIndex:index row:row col:i];
+            if (i - beginIndex >= keyArray.count) {
                 break;
             }
 
-            NSString *key = keyArray[i-propertyIndex];
-            if (cell.val && ![cell.val isEqual:[NSNull null]]) {
-                [self.dataMap setObject:cell.val forKey:key];
+            NSString *key = keyArray[i-beginIndex];
+            if (cell.str && ![cell.val isEqual:[NSNull null]] && cell.str.length) {
+                [self.dataMap setObject:valueDic[cell.str] forKey:key];
             } else{
                 [self.dataMap setObject:@0 forKey:key];
             }
         }
         
 
-        DHcell *signCell = [reader cellInWorkSheetIndex:index row:row col:(propertyIndex + propertyCount + 1)];
+        DHcell *signCell = [reader cellInWorkSheetIndex:index row:row col:(beginIndex + propertyCount)];
         if (signCell.str && signCell.str.length && ![signCell.str isEqual:[NSNull null]]) {
             _sign1 = signCell.str;
         }
-        signCell = [reader cellInWorkSheetIndex:index row:row col:(propertyIndex + propertyCount + 2)];
+        signCell = [reader cellInWorkSheetIndex:index row:row col:(beginIndex + propertyCount + 1)];
         if (signCell.str && ![signCell.str isEqual:[NSNull null]]) {
             _sign2 = signCell.str;
         }
         
-        DHcell *channelCell = [reader cellInWorkSheetIndex:index row:row col:(propertyIndex + propertyCount + 3)];
+        DHcell *channelCell = [reader cellInWorkSheetIndex:index row:row col:(beginIndex + propertyCount + 2)];
         if (channelCell.str && ![channelCell.str isEqual:[NSNull null]]) {
             _channel = channelCell.str;
         }

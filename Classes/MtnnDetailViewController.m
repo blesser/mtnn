@@ -10,6 +10,7 @@
 #import "MtnnGotStatusCell.h"
 #import "MtnnItem.h"
 #import "MtnnDataManager.h"
+#import "UIBarButtonItem+CustomButton.h"
 
 @interface MtnnDetailViewController () <UITableViewDelegate, UITableViewDataSource, MtnnGotStatusCellDelegate>
 

@@ -50,7 +50,7 @@ static NSInteger maxPageCount = 9;
         
         _constFlagArray = @[@"华丽", @"简约", @"优雅", @"活泼",  @"成熟",  @"可爱",  @"性感",  @"清纯",  @"清凉", @"保暖"];
         
-        _selectedStatus = [NSMutableArray arrayWithArray:self.constFlagArray];
+        _selectedStatus = [NSMutableArray arrayWithArray:[MtnnItem valueDicArrayWithArray:self.constFlagArray]];
         
         NSDictionary *itemGotDic = [[NSUserDefaults standardUserDefaults] objectForKey:@"ItemGotList"];
         if (itemGotDic && itemGotDic.count) {
@@ -128,7 +128,7 @@ static NSInteger maxPageCount = 9;
 
 - (void)reset
 {
-    _selectedStatus = [NSMutableArray arrayWithArray:self.constFlagArray];
+    _selectedStatus = [NSMutableArray arrayWithArray:[MtnnItem valueDicArrayWithArray:self.constFlagArray]];
 }
 
 - (void)reloadData

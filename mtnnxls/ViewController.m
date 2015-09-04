@@ -65,7 +65,8 @@ extern int xls_debug;
     UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithButtonTitle:@"套装" target:self action:@selector(coordinateButtonPressed:)];
     self.navigationItem.leftBarButtonItem = leftItem;
     
-    [self.view addSubview:self.filterView];
+    //[self.view addSubview:self.filterView];
+    [self.tableView setTableHeaderView:self.filterView];
     [self.view addSubview:self.tableView];
     
     self.filterView.maxSelectedCount = 5;
@@ -134,9 +135,10 @@ extern int xls_debug;
     
     NSArray *coordinateArray = [MtnnDataManager sharedManager].coordinatesDic[title];
     if (coordinateArray) {
+        NSArray *coordinateArrayWithValue = [MtnnItem valueDicArrayWithArray:coordinateArray];
         [[MtnnDataManager sharedManager].selectedStatus removeAllObjects];
-        [[MtnnDataManager sharedManager].selectedStatus addObjectsFromArray:coordinateArray];
-        [self.filterView selectCoordinateData:coordinateArray];
+        [[MtnnDataManager sharedManager].selectedStatus addObjectsFromArray:coordinateArrayWithValue];
+        [self.filterView selectCoordinateData:coordinateArrayWithValue];
     } else {
         [self.filterView clear];
         [[MtnnDataManager sharedManager] reset];
@@ -210,7 +212,7 @@ extern int xls_debug;
     } else{
         [cell setCellType:MtnnContentCellNormalType];
         MtnnItem *item = [MtnnDataManager sharedManager].currentItemArray[indexPath.row-1];
-        [cell setCellWithName:item.name currentValue:[item currentValueWithSelectStatus:[MtnnDataManager sharedManager].selectedStatus] allValue:[item allValue] got:item.got];
+        [cell setCellWithName:item.name currentValue:[item currentValueWithSelectStatus:[MtnnDataManager sharedManager].selectedStatus] allValue:[item allValueWithSelectStatus:[MtnnDataManager sharedManager].selectedStatus] got:item.got];
     }
 
     return cell;
@@ -225,11 +227,18 @@ extern int xls_debug;
     }
 }
 
+#pragma mark -
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    [self.filterView resignActiveTextField];
+}
+
 #pragma mark - setter & getter
 
 - (UITableView *)tableView{
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, CGRectGetMaxY(self.filterView.frame) + 1.0f, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - CGRectGetHeight(self.filterView.frame)) style:UITableViewStylePlain];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 1.0f, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame)) style:UITableViewStylePlain];
         _tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         _tableView.delegate = self;
         _tableView.dataSource = self;
@@ -246,7 +255,7 @@ extern int xls_debug;
 - (MtnnFilterView *)filterView
 {
     if (!_filterView) {
-        _filterView = [[MtnnFilterView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, CGRectGetWidth(self.view.frame), 125.0f) filterOptions:[MtnnDataManager sharedManager].constFlagArray];
+        _filterView = [[MtnnFilterView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, CGRectGetWidth(self.view.frame), 155.0f) filterOptions:[MtnnDataManager sharedManager].constFlagArray];
         _filterView.delegate = self;
     }
     

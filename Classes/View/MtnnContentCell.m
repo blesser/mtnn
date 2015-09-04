@@ -54,11 +54,11 @@
     }
 }
 
-- (void)setCellWithName:(NSString *)name currentValue:(NSUInteger)currentValue allValue:(NSUInteger)allValue got:(BOOL)got
+- (void)setCellWithName:(NSString *)name currentValue:(CGFloat)currentValue allValue:(CGFloat)allValue got:(BOOL)got
 {
     self.nameLabel.text = name;
-    self.currentValue.text = [NSString stringWithFormat:@"%d",currentValue];
-    self.allValue.text = [NSString stringWithFormat:@"%d",allValue];
+    self.currentValue.text = [NSString stringWithFormat:@"%.2f",currentValue];
+    self.allValue.text = [NSString stringWithFormat:@"%.2f",allValue];
     
     if (got) {
         self.currentValue.textColor = [UIColor colorWithRed:0x47 / 255.0f green:0x9e / 255.0f blue:0x12 / 255.0f alpha:1.00f];

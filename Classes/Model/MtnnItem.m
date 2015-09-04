@@ -9,6 +9,7 @@
 #import "MtnnItem.h"
 #import "DHxlsReader.h"
 #import "MtnnDataManager.h"
+#import "MtnnDefines.h"
 
 static NSInteger const propertyIndex = 5;
 static NSInteger const propertyCount = 10;
@@ -87,28 +88,50 @@ static NSInteger const propertyCount = 10;
 
 #pragma mark - Public Methods
 
-- (NSUInteger)currentValueWithSelectStatus:(NSArray *)flagStatus{
-    __block NSUInteger currentValue = 0;
+- (CGFloat)currentValueWithSelectStatus:(NSArray *)flagStatusDics
+{
+    __block CGFloat currentValue = 0.0f;
     __typeof(&*self) __weak weakSelf = self;
 
-    [flagStatus enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        if (weakSelf.dataMap[obj]) {
-            currentValue += [weakSelf.dataMap[obj] unsignedIntegerValue];
+    [flagStatusDics enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        NSDictionary *flagDic = obj;
+        NSString *flagStatus = flagDic[flagPropertyKey];
+        CGFloat flagValue = [flagDic[flagValueKey] floatValue];
+        if (weakSelf.dataMap[flagStatus]) {
+            currentValue += ([weakSelf.dataMap[flagStatus] floatValue] * flagValue);
         }
     }];
     
     return currentValue;
 }
 
-- (NSUInteger)allValue
+- (CGFloat)allValueWithSelectStatus:(NSArray *)flagStatusDics
 {
-    NSArray *allValues = [self.dataMap allValues];
-    NSUInteger value = 0;
-    for (NSNumber *obj in allValues) {
-        value += [obj unsignedIntegerValue];
-    }
+    __block CGFloat currentValue = 0.0f;
+    __typeof(&*self) __weak weakSelf = self;
     
-    return value;
+    [self.dataMap enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        NSNumber *number = obj;
+        NSString *title = key;
+        __block BOOL found  = NO;
+
+        [flagStatusDics enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            NSDictionary *flagDic = obj;
+            NSString *flagTitle = flagDic[flagPropertyKey];
+            if ([flagTitle isEqualToString:title]) {
+                found = YES;
+                CGFloat flagValue = [flagDic[flagValueKey] floatValue];
+                currentValue += ([weakSelf.dataMap[flagTitle] floatValue] * flagValue);
+            }
+        }];
+        
+        if (!found) {
+            currentValue += [weakSelf.dataMap[title] floatValue];
+        }
+        
+    }];
+
+    return currentValue;
 }
 
 #pragma mark - setter & getter
@@ -118,6 +141,33 @@ static NSInteger const propertyCount = 10;
         _dataMap = [NSMutableDictionary dictionary];
     }
     return _dataMap;
+}
+
+#pragma mark - Class Methods
+
++ (NSDictionary *)valueDicWithTitle:(NSString *)title value:(CGFloat)value
+{
+    return @{flagPropertyKey:title,
+             flagValueKey:@(value)};
+}
+
++ (NSArray *)valueDicArrayWithArray:(NSArray *)flagArray
+{
+    NSMutableArray *tempArray = [NSMutableArray array];
+    for (NSString *title in flagArray) {
+        [tempArray addObject:[[self class] valueDicWithTitle:title value:1.0f]];
+    }
+    return [NSArray arrayWithArray:tempArray];
+}
+
++ (NSArray *)titleArrayWithValueDicArray:(NSArray *)valueDic
+{
+    NSMutableArray *tempArray = [NSMutableArray array];
+    for (NSDictionary *dic in valueDic) {
+        [tempArray addObject:dic[flagPropertyKey]];
+    }
+    return [NSArray arrayWithArray:tempArray];
+
 }
 
 @end

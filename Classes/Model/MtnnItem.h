@@ -20,7 +20,11 @@
 
 - (instancetype)initWithReader:(DHxlsReader *)reader index:(uint32_t)index row:(uint32_t)row keyArray:(NSArray *)keyArray;
 
-- (NSUInteger)currentValueWithSelectStatus:(NSArray *)flagStatus;
-- (NSUInteger)allValue;
+- (CGFloat)currentValueWithSelectStatus:(NSArray *)flagStatus;
+- (CGFloat)allValueWithSelectStatus:(NSArray *)flagStatusDics;
+
++ (NSDictionary *)valueDicWithTitle:(NSString *)title value:(CGFloat)value;
++ (NSArray *)valueDicArrayWithArray:(NSArray *)flagArray;
++ (NSArray *)titleArrayWithValueDicArray:(NSArray *)valueDic;
 
 @end

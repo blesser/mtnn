@@ -27,4 +27,6 @@
 
 - (void)clear;
 
+- (void)resignActiveTextField;
+
 @end

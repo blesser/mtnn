@@ -34,6 +34,7 @@
 		DEB78B7714BC7D4400845894 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEB78B7614BC7D4400845894 /* Foundation.framework */; };
 		DEB78B7914BC7D4400845894 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEB78B7814BC7D4400845894 /* CoreGraphics.framework */; };
 		DEF79AD416E8E60F00E4B803 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = DEF79AD316E8E60F00E4B803 /* README.md */; };
+		F3CD31101BA5147D006520F5 /* MtnnService.m in Sources */ = {isa = PBXBuildFile; fileRef = F3CD310F1BA5147D006520F5 /* MtnnService.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,6 +117,8 @@
 		DEB78B7814BC7D4400845894 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		DEB78B9514BC7D9600845894 /* DHxlsReaderIOS.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = DHxlsReaderIOS.xcodeproj; sourceTree = "<group>"; };
 		DEF79AD316E8E60F00E4B803 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		F3CD310E1BA5147D006520F5 /* MtnnService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MtnnService.h; path = Classes/MtnnService.h; sourceTree = "<group>"; };
+		F3CD310F1BA5147D006520F5 /* MtnnService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MtnnService.m; path = Classes/MtnnService.m; sourceTree = "<group>"; };
 		F3D4889D1B99C98900442D4A /* MtnnDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MtnnDefines.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -160,6 +163,8 @@
 				14D8DC0D1B3C4E84005DA3F8 /* MtnnDetailViewController.h */,
 				14D8DC0E1B3C4E84005DA3F8 /* MtnnDetailViewController.m */,
 				F3D4889D1B99C98900442D4A /* MtnnDefines.h */,
+				F3CD310E1BA5147D006520F5 /* MtnnService.h */,
+				F3CD310F1BA5147D006520F5 /* MtnnService.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -368,6 +373,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				144FCAF01B2D5ABF006EFD13 /* ViewController.m in Sources */,
+				F3CD31101BA5147D006520F5 /* MtnnService.m in Sources */,
 				144FCAFC1B2D5AF8006EFD13 /* main.m in Sources */,
 				144FCB041B2D5C03006EFD13 /* MtnnDataManager.m in Sources */,
 				144FCB121B2D8289006EFD13 /* UIBarButtonItem+CustomButton.m in Sources */,

@@ -10,6 +10,7 @@
 #import "DHxlsReader.h"
 #import "MtnnDataManager.h"
 #import "MtnnDefines.h"
+#import "MtnnService.h"
 
 static NSInteger const propertyIndex = 5;
 static NSInteger const propertyCount = 10;
@@ -33,13 +34,9 @@ static NSInteger const propertyCount = 10;
 - (instancetype)initWithReader:(DHxlsReader *)reader index:(uint32_t)index row:(uint32_t)row keyArray:(NSArray *)keyArray
 {
     if (self = [super init]) {
-        
-        NSDictionary *valueDic = @{@"SS": @(6),
-                                   @"S": @(5),
-                                   @"A": @(4),
-                                   @"B": @(3),
-                                   @"C": @(2)};
-        
+        NSString *title = [reader sheetNameAtIndex:index];
+
+        NSDictionary *valueDic = [MtnnService scoreDictionaryWithTitle:title];
         DHcell *cell = [reader cellInWorkSheetIndex:index row:row col:1];
         self.name = cell.str;
         
@@ -49,7 +46,6 @@ static NSInteger const propertyCount = 10;
         
         _subType = @"无";
 
-        NSString *title = [reader sheetNameAtIndex:index];
         NSInteger beginIndex = propertyIndex;
         if ([title isEqualToString:@"袜子"] || [title isEqualToString:@"饰品"]) {
             DHcell *signCell = [reader cellInWorkSheetIndex:index row:row col:(propertyIndex-1)];

@@ -14,6 +14,7 @@
 
 @property (nonatomic, readonly ,copy) NSString *name;
 @property (nonatomic ,assign) BOOL got;
+@property (nonatomic, readonly, copy) NSString *subType;
 @property (nonatomic, readonly, copy) NSString *sign1;
 @property (nonatomic, readonly, copy) NSString *sign2;
 @property (nonatomic, readonly, copy) NSString *channel;

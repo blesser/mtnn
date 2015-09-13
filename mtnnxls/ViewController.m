@@ -212,7 +212,7 @@ extern int xls_debug;
     } else{
         [cell setCellType:MtnnContentCellNormalType];
         MtnnItem *item = [MtnnDataManager sharedManager].currentItemArray[indexPath.row-1];
-        [cell setCellWithName:item.name currentValue:[item currentValueWithSelectStatus:[MtnnDataManager sharedManager].selectedStatus] allValue:[item allValueWithSelectStatus:[MtnnDataManager sharedManager].selectedStatus] got:item.got];
+        [cell setCellWithName:item.name currentValue:[item currentValueWithSelectStatus:[MtnnDataManager sharedManager].selectedStatus] allValue:[item allValueWithSelectStatus:[MtnnDataManager sharedManager].selectedStatus] got:item.got subType:item.subType];
     }
 
     return cell;

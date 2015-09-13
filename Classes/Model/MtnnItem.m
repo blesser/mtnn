@@ -19,6 +19,7 @@ static NSInteger const propertyCount = 10;
 @property (nonatomic, strong) NSMutableDictionary *dataMap;
 
 @property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy) NSString *subType;
 @property (nonatomic, copy) NSString *sign1;
 @property (nonatomic, copy) NSString *sign2;
 @property (nonatomic, copy) NSString *channel;
@@ -46,7 +47,16 @@ static NSInteger const propertyCount = 10;
             return nil;
         }
         
-        NSInteger beginIndex = ([self.name isEqualToString:@"袜子"] || [self.name isEqualToString:@"饰品"]) ? propertyIndex + 1: propertyIndex;
+        _subType = @"无";
+
+        NSString *title = [reader sheetNameAtIndex:index];
+        NSInteger beginIndex = propertyIndex;
+        if ([title isEqualToString:@"袜子"] || [title isEqualToString:@"饰品"]) {
+            DHcell *signCell = [reader cellInWorkSheetIndex:index row:row col:(propertyIndex-1)];
+            if (signCell.str && signCell.str.length && ![signCell.str isEqual:[NSNull null]]) {
+                _subType = signCell.str;
+            }
+        }
         
         for (unsigned int i= beginIndex; i<(propertyCount + beginIndex); i++) {
             DHcell *cell = [reader cellInWorkSheetIndex:index row:row col:i];

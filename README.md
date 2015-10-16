@@ -8,7 +8,7 @@
 
 ## Installation
 
-clone https://github.com/blesser/mtnn.git
+git clone https://github.com/blesser/mtnn.git
 
 ## Version
 
